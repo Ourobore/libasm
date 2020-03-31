@@ -1,20 +1,38 @@
-$(SRCS)			: $(DIR)/ft_strlen.s
+SRCS		= $(DIR)/ft_strlen.s
 
-$(DIR)			: ./srcs
+DIR			= ./srcs
 
-$(INCLUDES)		: -Ilibasm.h
+OBJS		:= ${SRCS:.c=.o}
 
-$(NASM)			: nasm
+INCLUDES	= -Ilibasm.h
 
-$(NASMFLAGS)	: -f elf
+NASM		= nasm
 
-$(CC)			: gcc
+NASMFLAGS	= -f elf
 
-$(CFLAGS)		: -Wall -Werror -Wextra
+CC			= gcc
 
-$(LIBASM)		: libasm.a
+CFLAGS		= -Wall -Werror -Wextra
 
-.s.o			:
-				  $(NASM) $(NASMFLAGS) -c $< -o $(<:.s=.o) $(INCLUDES)
+NAME		= libasm.a
 
-clean			: 
+.s.o		:
+			  $(NASM) $(NASMFLAGS) -c $< -o $(<:.s=.o) $(INCLUDES)
+
+all			: $(NAME)
+
+$(NAME)		: $(OBJS)
+			  ar -rcs $(NAME) $(OBJS)
+
+test		: all
+			  $(CC) $(CFLAGS) main.c $(NAME) $(INCLUDES)
+
+clean		: $(OBJS)
+			  rm -rf $(OBJS)
+
+fclean		: clean
+			  rm -rf a.out $(NAME)
+
+re			: fclean all
+
+.PHONY		: all test clean fclean re
