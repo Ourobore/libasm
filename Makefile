@@ -2,13 +2,13 @@ SRCS		= $(DIR)/ft_strlen.s
 
 DIR			= ./srcs
 
-OBJS		:= ${SRCS:.c=.o}
+OBJS		:= ${SRCS:.s=.o}
 
 INCLUDES	= -Ilibasm.h
 
 NASM		= nasm
 
-NASMFLAGS	= -f elf
+NASMFLAGS	= -f macho64
 
 CC			= gcc
 
@@ -17,17 +17,19 @@ CFLAGS		= -Wall -Werror -Wextra
 NAME		= libasm.a
 
 .s.o		:
-			  $(NASM) $(NASMFLAGS) -c $< -o $(<:.s=.o) $(INCLUDES)
+			  $(NASM) $(NASMFLAGS) $< -o $(<:.s=.o) $(INCLUDES)
 
 all			: $(NAME)
 
 $(NAME)		: $(OBJS)
 			  ar -rcs $(NAME) $(OBJS)
+			  ranlib $(NAME)
 
 test		: all
+			 #gcc main.c srcs/ft_strlen.o $(INCLUDES)
 			  $(CC) $(CFLAGS) main.c $(NAME) $(INCLUDES)
 
-clean		: $(OBJS)
+clean		:
 			  rm -rf $(OBJS)
 
 fclean		: clean
