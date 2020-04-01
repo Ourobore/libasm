@@ -1,4 +1,5 @@
-SRCS		= $(DIR)/ft_strlen.s
+SRCS		= $(DIR)/ft_strlen.s \
+			  $(DIR)/ft_strcmp.s
 
 DIR			= ./srcs
 
@@ -26,8 +27,7 @@ $(NAME)		: $(OBJS)
 			  ranlib $(NAME)
 
 test		: all
-			 #gcc main.c srcs/ft_strlen.o $(INCLUDES)
-			  $(CC) $(CFLAGS) main.c $(NAME) $(INCLUDES)
+			  $(CC) $(CFLAGS) -g3 -fsanitize=address main.c $(NAME) $(INCLUDES)
 
 clean		:
 			  rm -rf $(OBJS)
