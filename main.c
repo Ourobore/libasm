@@ -5,6 +5,7 @@ int		main()
 	test_ft_strlen();
 	test_ft_strcmp();
 	test_ft_strcpy();
+	test_ft_write();
 }
 
 void	test_ft_strlen()
@@ -41,12 +42,25 @@ void	test_ft_strcpy()
 	dst[3] = 0;
 	src = "abcde";
 	printf("DST : [%s] \t SRC : [%s]\n", dst, src);
-	printf("dst: %s \n", dst);
 	printf("<string.h> strcpy function: [%s]\n", strcpy(dst, src));
 	dst[0] = 0;
 	dst[1] = 0;
 	dst[2] = 0;
 	dst[3] = 0;
 	printf("'libasm.h' ft_strcpy function: [%s]\n", ft_strcpy(dst, src));
-	printf("dst: %s \n", dst);
+}
+
+void	test_ft_write()
+{
+	int		fd;
+	char	*s;
+
+	fd = 1;
+	s = "blabla";
+	printf("fd: [%d] \t string: [%s]\n", fd, s);
+	printf("{%lu}\n", write(fd, s, 7));
+	printf("\n===========\n");
+	printf("{%lu}\n", ft_write(fd, s, 7));
+	printf("\n===========\n");
+
 }
