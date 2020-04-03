@@ -1,4 +1,4 @@
-.intel_syntax
+.intel_syntax:
 
 global _ft_read
 

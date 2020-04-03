@@ -7,6 +7,7 @@ int		main()
 	test_ft_strcpy();
 	test_ft_write();
 	test_ft_read();
+	test_ft_strdup();
 }
 
 void	test_ft_strlen()
@@ -41,7 +42,7 @@ void	test_ft_strcpy()
 	dst[1] = 0;
 	dst[2] = 0;
 	dst[3] = 0;
-	src = "abcde";
+	src = "abc";
 	printf("DST : [%s] \t SRC : [%s]\n", dst, src);
 	printf("<string.h> strcpy function: [%s]\n", strcpy(dst, src));
 	dst[0] = 'r';
@@ -73,8 +74,22 @@ void	test_ft_read()
 	fd = 0;
 	s = "a";
 	printf("fd: [%d] \t buffer: [%s]\n", fd, s);
-	read(fd, s, 1);
+	//read(fd, s, 1);
 	printf("===========\n");
-	ft_read(fd, s, 1);
+	//ft_read(fd, s, 1);
+
+}
+
+void	test_ft_strdup()
+{
+	char	*real;
+	char	*mine;
+	const char	*src;
+
+	src = "malloc and copy";
+	real = strdup(src);
+	mine = ft_strdup(src);
+	printf("Source: [%s]\n", src);
+	printf("real strdup: [%s] \t mine strdup: [%s]\n", real, mine);
 
 }
