@@ -6,13 +6,14 @@ int		main()
 	test_ft_strcmp();
 	test_ft_strcpy();
 	test_ft_write();
+	test_ft_read();
 }
 
 void	test_ft_strlen()
 {
 	const char *string;
 
-	string = "This is a sentence";
+	string = "Test phrase";
 	printf("Length of : [%s]\n", string);
 	printf("<string.h> strlen function: [%lu]\n", strlen(string));
 	printf("'libasm.h' ft_strlen function: [%lu]\n", ft_strlen(string));
@@ -36,14 +37,14 @@ void	test_ft_strcpy()
 	const char	*src;
 
 	dst = malloc(4);
-	dst[0] = 0;
+	dst[0] = 'r';
 	dst[1] = 0;
 	dst[2] = 0;
 	dst[3] = 0;
 	src = "abcde";
 	printf("DST : [%s] \t SRC : [%s]\n", dst, src);
 	printf("<string.h> strcpy function: [%s]\n", strcpy(dst, src));
-	dst[0] = 0;
+	dst[0] = 'r';
 	dst[1] = 0;
 	dst[2] = 0;
 	dst[3] = 0;
@@ -58,9 +59,22 @@ void	test_ft_write()
 	fd = 1;
 	s = "blabla";
 	printf("fd: [%d] \t string: [%s]\n", fd, s);
-	printf("{%lu}\n", write(fd, s, 7));
-	printf("\n===========\n");
-	printf("{%lu}\n", ft_write(fd, s, 7));
-	printf("\n===========\n");
+	printf("{%lu}\n", write(fd, s, 6));
+	printf("===========\n");
+	printf("{%lu}\n", ft_write(fd, s, 6));
+
+}
+
+void	test_ft_read()
+{
+	int		fd;
+	char	*s;
+
+	fd = 0;
+	s = "a";
+	printf("fd: [%d] \t buffer: [%s]\n", fd, s);
+	read(fd, s, 1);
+	printf("===========\n");
+	ft_read(fd, s, 1);
 
 }

@@ -7,18 +7,18 @@ _ft_strcmp:
 	sub al, [rsi]		; diff stored in 1 byte reg
 
 	cmp [rdi], byte 0	; if the first string is done
-	je ft_strcmp_stop
+	je stop
 	cmp [rsi], byte 0	; if the second string is done
-	je ft_strcmp_stop
+	je stop
 	
 	cmp al, 0			; if there is a diff
-	jne ft_strcmp_stop
+	jne stop
 	
 	inc rdi				; next rdi byte
 	inc rsi				; next rsi byte
 	jmp _ft_strcmp		; call next iteration with new bytes
 
 
-ft_strcmp_stop:
-	movsx rax, al		; putting back the diff in rax
+stop:
+	movsx rax, al		; putting back the signed diff in rax
 	ret

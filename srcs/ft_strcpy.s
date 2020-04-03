@@ -2,30 +2,25 @@
 
 global _ft_strcpy
 
+section .text
+
 _ft_strcpy:
-	push rcx
-	xor rcx, rcx
+	push rcx				; push counter to stack
+	xor rcx, rcx			; setting counter at 0
+	xor dl, dl				; setting tmp reg at 0
 
 loop:
-	mov rdi, rsi
+	mov dl, [rsi + rcx]		; copying rsi to rdi in 2 steps
+	mov [rdi + rcx], dl
 
-	cmp [rsi], byte 0
-	je back_loop
+	cmp [rsi + rcx], byte 0	; if rsi is finished
+	je stop
 
-	inc rdi
-	inc rsi
-	inc rcx
+	inc rcx					; incrementing counter
 	
-	jmp loop
+	jmp loop				; next loop iteration
 
-ft_strcpy_stop:
-	mov rax, rdi
-	pop rcx
+stop:
+	mov rax, rdi			; putting result in return reg
+	pop rcx					; putting back original value in rcx
 	ret
-
-back_loop:
-	cmp rcx, 0
-	je ft_strcpy_stop
-	dec rcx
-	dec rdi
-	jmp back_loop

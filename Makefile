@@ -1,7 +1,8 @@
 SRCS		= $(DIR)/ft_strlen.s \
 			  $(DIR)/ft_strcmp.s \
 			  $(DIR)/ft_strcpy.s \
-			  $(DIR)/ft_write.s
+			  $(DIR)/ft_write.s	 \
+			  $(DIR)/ft_read.s
 
 DIR			= ./srcs
 

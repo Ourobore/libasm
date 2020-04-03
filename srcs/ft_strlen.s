@@ -3,20 +3,15 @@
 global _ft_strlen
 
 _ft_strlen:
-	push rcx			; save counter / put the value on top of the stack
-	xor rcx, rcx		; erase counter / set to 0
-	;jmp ft_strlen_loop	; start the counting loop
+	xor rax, rax		; set counter / return value at 0
 
-ft_strlen_loop:
+loop:
 	cmp [rdi], byte 0	; check if the byte is null
-	jz ft_strlen_end	; then end the loop
+	jz stop				; then stop the loop
 
-	inc rcx				; else increment counter
-	inc rdi				; go to next byte
-	jmp ft_strlen_loop	; next iteration of the loop
+	inc rax				; increment counter
+	inc rdi				; go to string ext byte
+	jmp loop			; next iteration of the loop
 
-ft_strlen_end:
-	mov rax, rcx		; move counter in rax / return value
-	pop rcx				; put back the original back into rax
-
+stop:
 	ret					; return rax / stop function
