@@ -9,11 +9,11 @@ DIR			= ./srcs
 
 OBJS		:= ${SRCS:.s=.o}
 
-INCLUDES	= -Ilibasm.h
+INCLUDES	= -I .
 
 NASM		= nasm
 
-NASMFLAGS	= -f macho64
+NASMFLAGS	= -f elf64
 
 CC			= gcc
 
@@ -31,7 +31,7 @@ $(NAME)		: $(OBJS)
 			  ranlib $(NAME)
 
 test		: all
-			  $(CC) $(CFLAGS) -g3 -fsanitize=address  main.c $(NAME) $(INCLUDES)
+			  $(CC) $(CFLAGS) -no-pie -g main.c $(NAME) $(INCLUDES)
 
 clean		:
 			  rm -rf $(OBJS)

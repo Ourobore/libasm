@@ -1,10 +1,10 @@
-.intel_syntax:
+section .intel_syntax
 
-global _ft_strcpy
+global ft_strcpy
 
 section .text
 
-_ft_strcpy:
+ft_strcpy:
 	push rcx				; push counter to stack
 	xor rcx, rcx			; setting counter at 0
 	xor dl, dl				; setting tmp reg at 0

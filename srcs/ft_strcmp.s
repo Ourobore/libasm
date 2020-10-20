@@ -1,8 +1,8 @@
-.intel_syntax:
+section .intel_syntax
 
-global _ft_strcmp
+global ft_strcmp
 
-_ft_strcmp:
+ft_strcmp:
 	mov al, [rdi]
 	sub al, [rsi]		; diff stored in 1 byte reg
 
@@ -16,7 +16,7 @@ _ft_strcmp:
 	
 	inc rdi				; next rdi byte
 	inc rsi				; next rsi byte
-	jmp _ft_strcmp		; call next iteration with new bytes
+	jmp ft_strcmp		; call next iteration with new bytes
 
 
 stop:

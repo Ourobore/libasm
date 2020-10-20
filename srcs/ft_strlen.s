@@ -1,8 +1,8 @@
-.intel_syntax:
+section .intel_syntax
 
-global _ft_strlen
+global ft_strlen
 
-_ft_strlen:
+ft_strlen:
 	xor rax, rax		; set counter / return value at 0
 
 loop:
