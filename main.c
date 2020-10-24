@@ -7,7 +7,7 @@ int		main()
 	test_ft_strcmp();
 	test_ft_strcpy();
 	test_ft_write();
-	//test_ft_read();
+	test_ft_read();
 	test_ft_strdup();
 }
 
@@ -15,27 +15,27 @@ void	test_ft_strlen()
 {
 	printf("\n\n\n########## FT_STRLEN ##########\n\n");
 	
+	char	*s = "Long! Long!";
 	//Normal string
-	char	*s1 = "Test";
 	printf("\n___STRING___\n");
-	printf("\nString: \t[%s]\n", s1);
-	printf("FT_STRLEN: \tReturn: [%ld]\n", ft_strlen(s1));
-	printf("STRLEN: \tReturn: [%ld]\n", strlen(s1));
+	printf("\nString: \t[%s]\n", s);
+	printf("FT_STRLEN: \tReturn: [%ld]\n", ft_strlen(s));
+	printf("STRLEN: \tReturn: [%ld]\n", strlen(s));
 	
 	//Empty string
-	char	*s2 = "";
+	s = "";
 	printf("\n\n___EMPTY STRING___\n");
-	printf("\nString: \t[%s]\n", s2);
-	printf("FT_STRLEN: \tReturn: [%ld]\n", ft_strlen(s2));
-	printf("STRLEN: \tReturn: [%ld]\n", strlen(s2));
+	printf("\nString: \t[%s]\n", s);
+	printf("FT_STRLEN: \tReturn: [%ld]\n", ft_strlen(s));
+	printf("STRLEN: \tReturn: [%ld]\n", strlen(s));
 
 	/*
 	//NULL string
-	char	*s3 = NULL;
+	s = NULL;
 	printf("\n\n___NULL STRING___\n");
-	printf("\nString: \t[%s]\n", s3);
-	printf("FT_STRLEN: \tReturn: [%ld]\n", ft_strlen(s3));
-	printf("STRLEN: \tReturn: [%ld]\n", strlen(s3));
+	printf("\nString: \t[%s]\n", s);
+	printf("FT_STRLEN: \tReturn: [%ld]\n", ft_strlen(s));
+	printf("STRLEN: \tReturn: [%ld]\n", strlen(s));
 	*/
 }
 
@@ -158,8 +158,8 @@ void	test_ft_write()
 	close(fd2);
 
 	//Write on wrong fd
-	ret = ft_write(42, s, ft_strlen(s));
 	printf("\n\n___WRITE ON WRONG FD___\n");
+	ret = ft_write(42, s, ft_strlen(s));
 	printf("\nFT_WRITE: \tReturn: [%d] \t Errno: [%d]\n", ret, errno);
 	errno = 0;
 	ret = write(42, s, ft_strlen(s));
