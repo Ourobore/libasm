@@ -6,7 +6,7 @@ ft_strlen:
 	xor rax, rax		; set counter / return value at 0
 
 loop:
-	cmp [rdi], byte 0	; check if the byte is null
+	cmp BYTE [rdi], 0	; check if the byte is null
 	jz stop				; then stop the loop
 
 	inc rax				; increment counter

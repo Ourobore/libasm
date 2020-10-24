@@ -34,7 +34,7 @@ test		: all
 			  $(CC) $(CFLAGS) -no-pie -g main.c $(NAME) $(INCLUDES)
 
 clean		:
-			  rm -rf $(OBJS)
+			  rm -rf $(OBJS) myfile1 myfile2
 
 fclean		: clean
 			  rm -rf a.out $(NAME)
