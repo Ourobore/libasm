@@ -2,7 +2,7 @@ section .intel_syntax
 
 global ft_strcmp
 
-ft_strcmp:
+ft_strcmp:				; rdi = 1st param, rsi = 2nd param
 	mov al, [rdi]
 	sub al, [rsi]		; diff stored in 1 byte reg
 

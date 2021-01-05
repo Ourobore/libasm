@@ -2,7 +2,7 @@ section .intel_syntax
 
 global ft_strlen
 
-ft_strlen:
+ft_strlen:				; rdi = 1st param
 	xor rax, rax		; set counter / return value at 0
 
 loop:

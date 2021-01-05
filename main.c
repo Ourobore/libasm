@@ -97,7 +97,7 @@ void	test_ft_strcpy()
 
 	//"" to dest
 	src = "";
-	printf("\n\n___SRC TO EMPTY STRING___\n");
+	printf("\n\n___EMPTY SRC___\n");
 	dest1 = calloc(n, 1);
 	dest2 = calloc(n, 1);
 	printf("\nSRC : [%s] \t DEST : [%s]\n", src, dest1);

@@ -4,7 +4,7 @@ global ft_strcpy
 
 section .text
 
-ft_strcpy:
+ft_strcpy:					; rsi = 1st param, rdi = 2nd param
 	push rcx				; push counter to stack
 	xor rcx, rcx			; setting counter at 0
 	xor dl, dl				; setting tmp reg at 0
